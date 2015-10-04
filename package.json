@@ -19,5 +19,8 @@
     "manager"
   ],
   "author": "Lon Kastenson",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.64.0"
+  }
 }
