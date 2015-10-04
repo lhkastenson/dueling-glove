@@ -1,0 +1,23 @@
+{
+  "name": "dueling-glove",
+  "version": "1.0.0",
+  "description": "A wrapper for the challonge api to create and manage a tournament braket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "www.github.com/lhkastenson/dueling-glove"
+  },
+  "keywords": [
+    "challonge",
+    "api",
+    "wrapper",
+    "tournament",
+    "organizer",
+    "manager"
+  ],
+  "author": "Lon Kastenson",
+  "license": "ISC"
+}
