@@ -13,10 +13,19 @@
       "name": "test tournament",
       "tournament_type": "single elimination",
       "url": "sample_tournament_1",
-      "description": "this tournament is invalid"
+      "description": "this tournament is valid"
     }
   },
-  "TestTournamantResponse": {
+  "ExistingTestTournament": {
+    "api-key": "thisisabogusapikeyfortesting",
+    "tournament": {
+      "id": 123456,
+      "name": "test tournament rename",
+      "url": "sample_tournament_1",
+      "description": "this tournament is updated"
+    }
+  },
+  "TestTournamentResponse": {
     "tournament": {
       "accept_attachments": false,
       "allow_participant_match_reporting": true,
@@ -33,7 +42,7 @@
       "hide_forum": false,
       "hide_seeds": false,
       "hold_third_place_match": false,
-      "id": 1086875,
+      "id": 1234456,
       "max_predictions_per_user": 1,
       "name": "Sample Tournament 1",
       "notify_users_when_matches_open": true,
