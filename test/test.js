@@ -16,8 +16,8 @@ describe('Tournament', function() {
     
     before(function(done){
       sinon
-	.stub(request, 'post')
-	.yields(null, null, JSON.stringify(testData.ExistingTestTournament.tournament.name));
+    	.stub(request, 'post')
+    	.yields(null, null, JSON.stringify(testData.ExistingTestTournament.tournament.name));
       done();
     });
 
@@ -31,16 +31,19 @@ describe('Tournament', function() {
 	  if(err) return done(err);
 	  request.post.called.should.be.equal(true);
 	  result.should.not.be.empty;
-	  done();
+	  done(result);
 	});
       });
     });
 
   describe('#save()', function() {
     it('should save a existing tournament', function() {
-      duel.saveTournament(testData.ExistingTestTournament);
+      duel.saveTournament(testData.ExistingTestTournament, function(err, result) {
+        if(err) return done(err);
+	request.put.called.should.be.equal(true);
+	result.should.not.be.empty;
+	done(result);
+      });
     });
   });
 });
-    
-      

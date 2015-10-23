@@ -26,6 +26,7 @@
     }
   },
   "TestTournamentResponse": {
+    "api-key": "thisisabogusapikeyfortesting",
     "tournament": {
       "accept_attachments": false,
       "allow_participant_match_reporting": true,
