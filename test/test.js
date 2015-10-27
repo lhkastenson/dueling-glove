@@ -8,12 +8,14 @@ var exception = require('../exception');
 
 describe('Tournament', function() {
   describe('#create()', function() {
-    it('should not create a tournament without an api_key', function () {
-      assert.throws( function () {
-	duel.createTournament(testData.InvalidTestTournament);
-      }, exception.MissingApiKey);
+      it('should not create a tournament without an api_key', function () {
+	assert.throws( function () {
+	  duel.createTournament(testData.InvalidTestTournament);
+      }, exception.MissingApiKeyException);
     });
-    
+
+  });
+  describe('#create()', function() {
     before(function(done){
       sinon
     	.stub(request, 'post')
@@ -22,16 +24,14 @@ describe('Tournament', function() {
     });
 
     after(function(done){
-      request.get.restore();
       done();
     });
 
-    it('should create a tournament', function(done) {
+    it('should create a tournament', function() {
 	duel.createTournament(testData.ValidTestTournament, function(err, result){
 	  if(err) return done(err);
 	  request.post.called.should.be.equal(true);
 	  result.should.not.be.empty;
-	  done(result);
 	});
       });
     });
@@ -40,9 +40,9 @@ describe('Tournament', function() {
     it('should save a existing tournament', function() {
       duel.saveTournament(testData.ExistingTestTournament, function(err, result) {
         if(err) return done(err);
-	request.put.called.should.be.equal(true);
-	result.should.not.be.empty;
-	done(result);
+      	request.put.called.should.be.equal(true);
+      	result.should.not.be.empty;
+      	done(result);
       });
     });
   });

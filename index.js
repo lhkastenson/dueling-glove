@@ -29,8 +29,8 @@ module.exports = {
 };
 
 function validate_request(data) {
-  if(data.api_key === undefined ||data.api_key === null || data.api_key === '') {
-    throw exception.MissingApiKeyException();
+  if(!data.hasOwnProperty('api_key') || data.api_key === '') {
+    throw new exception.MissingApiKeyException();
   }
 }
 

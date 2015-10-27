@@ -8,7 +8,7 @@
     }
   },
   "ValidTestTournament": {
-    "api_key": "thisisabogusapikeyfortesting",
+    "api_key": "thisisabogusapikeyfortesting1",
     "tournament": {
       "name": "test tournament",
       "tournament_type": "single elimination",
@@ -17,7 +17,7 @@
     }
   },
   "ExistingTestTournament": {
-    "api-key": "thisisabogusapikeyfortesting",
+    "api_key": "thisisabogusapikeyfortesting2",
     "tournament": {
       "id": 123456,
       "name": "test tournament rename",
@@ -26,7 +26,7 @@
     }
   },
   "TestTournamentResponse": {
-    "api-key": "thisisabogusapikeyfortesting",
+    "api_key": "thisisabogusapikeyfortesting3",
     "tournament": {
       "accept_attachments": false,
       "allow_participant_match_reporting": true,
