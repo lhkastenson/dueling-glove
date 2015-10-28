@@ -8,14 +8,6 @@ var exception = require('../exception');
 
 describe('Tournament', function() {
   describe('#create()', function() {
-      it('should not create a tournament without an api_key', function () {
-	assert.throws( function () {
-	  duel.createTournament(testData.InvalidTestTournament);
-      }, exception.MissingApiKeyException);
-    });
-
-  });
-  describe('#create()', function() {
     before(function(done){
       sinon
     	.stub(request, 'post')
@@ -25,6 +17,12 @@ describe('Tournament', function() {
 
     after(function(done){
       done();
+    });
+
+    it('should not create a tournament without an api_key', function () {
+      assert.throws( function () {
+	duel.createTournament(testData.InvalidTestTournament);
+      }, exception.MissingApiKeyException);
     });
 
     it('should create a tournament', function() {
