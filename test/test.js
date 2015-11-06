@@ -8,35 +8,59 @@ var exception = require('../exception');
 
 describe('Tournament', function() {
   describe('#create()', function() {
-    before(function(done){
-      sinon
+    beforeEach(function(done){
+      this.request = sinon
     	.stub(request, 'post')
     	.yields(null, null, JSON.stringify(testData.ExistingTestTournament.tournament.name));
       done();
     });
 
-    after(function(done){
+    afterEach(function(done){
+      request.post.restore();
       done();
     });
 
     it('should not create a tournament without an api_key', function () {
-      assert.throws( function () {
-	duel.createTournament(testData.InvalidTestTournament);
-      }, exception.MissingApiKeyException);
+      assert.throws(
+	function () {
+	  duel.createTournament(null, testData.InvalidTestTournament);
+	},
+	function(err) {
+	  if (err instanceof Error) {
+	    return true;
+	  }
+	});
     });
 
     it('should create a tournament', function() {
-	duel.createTournament(testData.ValidTestTournament, function(err, result){
-	  if(err) return done(err);
-	  request.post.called.should.be.equal(true);
-	  result.should.not.be.empty;
-	});
+      duel.createTournament(null, testData.ValidTestTournament, function(err, result){
+	var expected = testData.ExistingTestTournament.tournament.name;
+	console.log(result);
+	console.log(expected);
+
+	if(err) return done(err);
+	var write = sinon.spy(request, 'post');
+
+	result.should.not.be.empty;
+	assert(result.equals(expected));
       });
     });
+  });
 
   describe('#save()', function() {
     it('should save a existing tournament', function() {
-      duel.saveTournament(testData.ExistingTestTournament, function(err, result) {
+      before(function(done){
+	sinon
+    	  .stub(request, 'put')
+    	  .yields(null, null, JSON.stringify(testData.ExistingTestTournament.tournament.name));
+	done();
+      });
+
+      after(function(done){
+	done();
+      });
+
+      duel.saveTournament(null, testData.ExistingTestTournament, function(err, result) {
         if(err) return done(err);
       	request.put.called.should.be.equal(true);
       	result.should.not.be.empty;
