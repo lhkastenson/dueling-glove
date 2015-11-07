@@ -68,4 +68,16 @@ describe('Tournament', function() {
       });
     });
   });
+
+  it('should not save a tournament without an api_key', function () {
+    assert.throws(
+      function () {
+	duel.saveTournament(null, testData.InvalidTestTournament);
+      },
+      function(err) {
+	if (err instanceof Error) {
+	  return true;
+	}
+      });
+  });
 });
