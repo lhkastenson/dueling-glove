@@ -1,6 +1,7 @@
 module.exports = {
-  MissingApiKeyException: function(msg) {
-    this.name = "MissingApiKeyException";
-    this.message = msg;
+  MissingApiKeyException:  {
+    function () { 
+      return Error("MissingApiKeyException")
+    }
   }
 };
