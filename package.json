@@ -21,10 +21,10 @@
   "author": "Lon Kastenson",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.64.0"
-    "async": "1.5.0"
+    "request": "^2.64.0",
+    "async": "1.5.0",
     "sinon": "1.17.1"
-  }
+  },
   "scripts": {
     "test": "mocha",
     "start": "node index.js",
