@@ -23,7 +23,7 @@ describe('Tournament', function() {
     it('should not create a tournament without an api_key', function () {
       assert.throws(
 	      function () {
-	        duel.createTournament(null, testData.InvalidTestTournament);
+	        duel.tournament.create(null, testData.InvalidTestTournament);
 	      },
 	      function(err) {
 	        if (err instanceof Error) {
@@ -33,7 +33,7 @@ describe('Tournament', function() {
     });
 
     it('should create a tournament', function() {
-      duel.createTournament(null, testData.ValidTestTournament, function(err, result){
+      duel.tournament.create(null, testData.ValidTestTournament, function(err, result){
 	      var expected = testData.ExistingTestTournament.tournament.name;
 	      console.log(result);
 	      console.log(expected);
@@ -60,7 +60,7 @@ describe('Tournament', function() {
 	      done();
       });
 
-      duel.saveTournament(null, testData.ExistingTestTournament, function(err, result) {
+      duel.tournament.save(null, testData.ExistingTestTournament, function(err, result) {
         if(err) return done(err);
       	request.put.called.should.be.equal(true);
       	result.should.not.be.empty;
@@ -72,7 +72,7 @@ describe('Tournament', function() {
   it('should not save a tournament without an api_key', function () {
     assert.throws(
       function () {
-	      duel.saveTournament(null, testData.InvalidTestTournament);
+	      duel.tournament.save(null, testData.InvalidTestTournament);
       },
       function(err) {
 	      if (err instanceof Error) {
