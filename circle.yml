@@ -1,0 +1,8 @@
+## Customize the test machine
+machine:
+
+  timezone:
+    America/Atlanta # Set the timezone
+
+  node:
+    version: 4.2.1
