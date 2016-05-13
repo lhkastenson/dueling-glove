@@ -10,8 +10,8 @@ describe('Tournament', function() {
   describe('#create()', function() {
     beforeEach(function(done){
       this.request = sinon
-    	.stub(request, 'post')
-    	.yields(null, null, JSON.stringify(testData.ExistingTestTournament.tournament.name));
+    	  .stub(request, 'post')
+    	  .yields(null, null, JSON.stringify(testData.ExistingTestTournament.tournament.name));
       done();
     });
 
@@ -22,27 +22,27 @@ describe('Tournament', function() {
 
     it('should not create a tournament without an api_key', function () {
       assert.throws(
-	function () {
-	  duel.createTournament(null, testData.InvalidTestTournament);
-	},
-	function(err) {
-	  if (err instanceof Error) {
-	    return true;
-	  }
-	});
+	      function () {
+	        duel.createTournament(null, testData.InvalidTestTournament);
+	      },
+	      function(err) {
+	        if (err instanceof Error) {
+	          return true;
+	        }
+	      });
     });
 
     it('should create a tournament', function() {
       duel.createTournament(null, testData.ValidTestTournament, function(err, result){
-	var expected = testData.ExistingTestTournament.tournament.name;
-	console.log(result);
-	console.log(expected);
+	      var expected = testData.ExistingTestTournament.tournament.name;
+	      console.log(result);
+	      console.log(expected);
 
-	if(err) return done(err);
-	var write = sinon.spy(request, 'post');
+	      if(err) return done(err);
+	      var write = sinon.spy(request, 'post');
 
-	result.should.not.be.empty;
-	assert(result.equals(expected));
+	      result.should.not.be.empty;
+	      assert(result.equals(expected));
       });
     });
   });
@@ -50,14 +50,14 @@ describe('Tournament', function() {
   describe('#save()', function() {
     it('should save a existing tournament', function() {
       before(function(done){
-	sinon
-    	  .stub(request, 'put')
-    	  .yields(null, null, JSON.stringify(testData.ExistingTestTournament.tournament.name));
-	done();
+	      sinon
+    	    .stub(request, 'put')
+    	    .yields(null, null, JSON.stringify(testData.ExistingTestTournament.tournament.name));
+	      done();
       });
 
       after(function(done){
-	done();
+	      done();
       });
 
       duel.saveTournament(null, testData.ExistingTestTournament, function(err, result) {
@@ -72,12 +72,12 @@ describe('Tournament', function() {
   it('should not save a tournament without an api_key', function () {
     assert.throws(
       function () {
-	duel.saveTournament(null, testData.InvalidTestTournament);
+	      duel.saveTournament(null, testData.InvalidTestTournament);
       },
       function(err) {
-	if (err instanceof Error) {
-	  return true;
-	}
+	      if (err instanceof Error) {
+	        return true;
+	      }
       });
   });
 });
