@@ -28,7 +28,7 @@ var save = function(err, data, callback) {
   }], callback)
 };
 
-var delete = function(err, data, callback) {
+var destroy = function(err, data, callback) {
   async.waterfall([function(callback) {
 	  if (err) throw err;
 	  validate_request(data);
@@ -43,7 +43,7 @@ function validate_request(data) {
 }
 
 module.exports = {
-  createTournament: createTournament,
-  saveTournament: saveTournament,
-  deleteTournament: deleteTournament
+  create: create,
+  save: save,
+  destroy: destroy
 }
