@@ -1,7 +1,7 @@
+var MissingApiKeyException = function() {
+  return Error("MissingApiKeyException");
+}
+
 module.exports = {
-  MissingApiKeyException:  {
-    function () { 
-      return Error("MissingApiKeyException")
-    }
-  }
+  MissingApiKeyException: MissingApiKeyException
 };
